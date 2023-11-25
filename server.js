@@ -11,14 +11,20 @@ import cors from "cors";
 //configure env
 dotenv.config();
 
+
 //databse config
 connectDB();
+
 
 //rest object
 const app = express();
 
 //middelwares
-app.use(cors());
+// app.use(cors());
+app.use(cors({
+  origin: 'https://mernfrontend-one.vercel.app/', // Replace with your Vercel frontend URL
+  credentials: true // If you're using credentials (like cookies)
+}));
 app.use(express.json());
 app.use(morgan("dev"));
 
